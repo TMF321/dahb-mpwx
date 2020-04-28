@@ -137,8 +137,7 @@ body,
 #app {
 	// 这里的px单位不希望被转化成rem
 	// 只需要将 px => PX
-  max-width: 540PX;
-	height: 100%;
+  max-width: 375PX;
 	margin: auto;
 }
 a:active,
@@ -169,18 +168,4 @@ a:visited {
 }
 .font-36 {
   font-size: 18px;
-}
-
-#app > div {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  background-color: #ffffff;
-}
-
-.animated {
-  animation-duration: 5000;
 }
