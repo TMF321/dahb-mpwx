@@ -82,6 +82,7 @@ export default {
             box-sizing: content-box;
             padding-left: 15px;
             border: none;
+            outline: none;
           }
         }
       }
