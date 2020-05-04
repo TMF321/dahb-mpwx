@@ -2,81 +2,16 @@
   <div class="page-home">
     <!--头部，轮播图-->
     <div class="swiper">
-      <div class="van-swipe">
-        <div class="van-swipe-track">
-          <div class="van-swipe-item">
-            <a href="#">
-              <img class="box" src="../../assets/icon/banner01.jpg" />
-            </a>
-          </div>
-
-          <div class="van-swipe-item">
-            <a href="#">
-              <img class="box" src="../../assets/icon/banner02.jpg" />
-            </a>
-          </div>
-
-          <div class="van-swipe-item">
-            <a href="#">
-              <img class="box" src="../../assets/icon/banner03.jpg" />
-            </a>
-          </div>
-
-          <div class="van-swipe-item">
-            <a href="#">
-              <img class="box" src="../../assets/icon/banner04.jpg" />
-            </a>
-          </div>
-
-          <div class="van-swipe-item">
-            <a href="#">
-              <img class="box" src="../../assets/icon/banner05.jpg" />
-            </a>
-          </div>
-        </div>
-
-        <div class="van-swipe-indicators">
-          <i class="van-swipe-indicator--active"></i>
-          <i class></i>
-          <i class></i>
-          <i class></i>
-          <i class></i>
-        </div>
-      </div>
+        <swiper class="van-swipe-item" @change="onChange" v-if="bannerList.length > 0">
+          <swiper-item v-for="item in bannerList" :key="item.id">
+            <router-link to="/search-result">
+              <img :src="item.img" alt class="box" />
+            </router-link>
+          </swiper-item>
+        </swiper>
     </div>
     <!-- nav -->
-    <div class="navbar">
-      <div class="navbarBox">
-        <a class="navbarItem" href="javascript:;">
-          <i class="map01"></i>
-          <span class="skin-navbar">书架</span>
-        </a>
-      </div>
-      <div class="navbarBox">
-        <a class="navbarItem" href="javascript:;">
-          <i class="map02"></i>
-          <span class="skin-navbar">分类</span>
-        </a>
-      </div>
-      <div class="navbarBox">
-        <a class="navbarItem" href="javascript:;">
-          <i class="map03"></i>
-          <span class="skin-navbar">排行</span>
-        </a>
-      </div>
-      <div class="navbarBox">
-        <a class="navbarItem" href="javascript:;">
-          <i class="map04"></i>
-          <span class="skin-navbar">找书</span>
-        </a>
-      </div>
-      <div class="navbarBox">
-        <a class="navbarItem" href="javascript:;">
-          <i class="map05"></i>
-          <span class="skin-navbar">我的</span>
-        </a>
-      </div>
-    </div>
+    <index-nav></index-nav>
     <!-- week -->
     <div class="activity">
       <div class="activityHeader">
@@ -705,14 +640,47 @@
       <!---->
     </div>
     <div class="backTop flex animateScale">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDM2IDQ0Ij4KICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+CjxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMxM2NiZDc7CiAgICAgICAgZmlsbC1ydWxlOiBldmVub2RkOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0i55+p5b2iXzYiIGRhdGEtbmFtZT0i55+p5b2iIDYiIGNsYXNzPSJjbHMtMSIgZD0iTTY5NSwxMTQ3LjFMNjc3LDExMjhsLTE4LDE5LjFoMTEuMjdWMTE2NmgxMy40NnYtMTguOUg2OTVabTAsME02NjIsMTEyMmgzMHYySDY2MnYtMloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02NTkgLTExMjIpIi8+Cjwvc3ZnPgo=" alt="">
+      <img
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDM2IDQ0Ij4KICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+CjxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMxM2NiZDc7CiAgICAgICAgZmlsbC1ydWxlOiBldmVub2RkOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0i55+p5b2iXzYiIGRhdGEtbmFtZT0i55+p5b2iIDYiIGNsYXNzPSJjbHMtMSIgZD0iTTY5NSwxMTQ3LjFMNjc3LDExMjhsLTE4LDE5LjFoMTEuMjdWMTE2NmgxMy40NnYtMTguOUg2OTVabTAsME02NjIsMTEyMmgzMHYySDY2MnYtMloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02NTkgLTExMjIpIi8+Cjwvc3ZnPgo="
+        alt
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperItem } from '@/components/Swiper'
+import { getBanner } from '@/api/mop'
+import IndexNav from './components/indexNav'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Swiper,
+    SwiperItem,
+    IndexNav
+  },
+
+  data () {
+    return {
+      bannerList: []
+    }
+  },
+
+  methods: {
+    onChange (index) {
+      console.log('hello', index)
+    },
+
+    getBanner () {
+      getBanner().then(res => {
+        this.bannerList = res.data
+      })
+    }
+  },
+
+  created () {
+    this.getBanner()
+  }
 }
 </script>
 
@@ -727,17 +695,10 @@ export default {
   .swiper {
     height: 160.5px;
     width: 100%;
-    .van-swipe {
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-
-      .van-swipe-track {
-        float: left;
-        height: 100%;
+    overflow: hidden;
+    position: relative;
 
         .van-swipe-item {
-          float: left;
           height: 100%;
 
           .box {
@@ -745,100 +706,7 @@ export default {
             height: 160.5px !important;
           }
         }
-      }
-
-      .van-swipe-indicators {
-        left: 50%;
-        bottom: 10px;
-        position: absolute;
-        height: 6px;
-        -webkit-transform: translate3d(-50%, 0, 0);
-        transform: translate3d(-50%, 0, 0);
-
-        .van-swipe-indicators > i {
-          border-radius: 100%;
-          vertical-align: top;
-          display: inline-block;
-          background-color: #999;
-          width: 6px;
-          height: 6px;
-        }
-
-        .van-swipe-indicators > i:not(:last-child) {
-          margin-right: 6px;
-        }
-        .van-swipe-indicator .van-swipe-indicator--active {
-          background-color: #f60;
-        }
-      }
-    }
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 69px;
-    margin: 20px 20px 0 20px;
-    .navbarBox {
-      width: 46px;
-      height: 69px;
-      .navbarItem {
-        display: block;
-        height: 69px;
-      }
-    }
-
-    .map01 {
-      display: inline-block;
-      width: 46px;
-      height: 46px;
-      margin-right: 10px;
-      background: url("../../assets/icon/sj.png") no-repeat;
-      background-size: cover;
-    }
-
-    .map02 {
-      display: inline-block;
-      width: 46px;
-      height: 46px;
-      margin-right: 10px;
-      background: url("../../assets/icon/fl.png") no-repeat;
-      background-size: cover;
-    }
-
-    .map03 {
-      display: inline-block;
-      width: 46px;
-      height: 46px;
-      margin-right: 10px;
-      background: url("../../assets/icon/ph.png") no-repeat;
-      background-size: cover;
-    }
-
-    .map04 {
-      display: inline-block;
-      width: 46px;
-      height: 46px;
-      margin-right: 10px;
-      background: url("../../assets/icon/zs.png") no-repeat;
-      background-size: cover;
-    }
-
-    .map05 {
-      display: inline-block;
-      width: 46px;
-      height: 46px;
-      margin-right: 10px;
-      background: url("../../assets/icon/me.png") no-repeat;
-      background-size: cover;
-    }
-    .skin-navbar {
-      margin-left: 10px;
-      color: #666;
-      font-size: 14px;
-    }
-  }
+     }
 
   .activity {
     display: flex;
@@ -876,7 +744,6 @@ export default {
             justify-content: center;
             align-content: space-around;
             position: relative;
-            height: 100%;
             width: 98.5px;
             margin: 0 12px;
             img {
@@ -889,10 +756,12 @@ export default {
               display: -webkit-box;
               -webkit-line-clamp: 1;
               color: #333;
-              margin: 3px 0;
+              margin: 2px 0;
               font-size: 14px;
             }
             span {
+              display: inline-block;
+              line-height: 26px;
               font-size: 12px;
               color: rgb(153, 153, 153);
             }
@@ -943,7 +812,6 @@ export default {
       padding-bottom: 8px;
       border-bottom: 1px solid #e7e7e7;
       margin-bottom: 8px;
-      -ms-flex-pack: justify;
       justify-content: space-between;
       .flex {
         display: flex;
@@ -966,7 +834,6 @@ export default {
           justify-content: space-between;
           width: calc(100% - 89px);
           .bookName {
-            overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 1;
             color: #333;
@@ -983,7 +850,7 @@ export default {
             display: -webkit-box;
             -webkit-line-clamp: 2;
             height: 40px;
-            line-height: 18px;
+            line-height: 20px;
             margin-bottom: 10px;
             color: #666;
             font-size: 14px;
@@ -1014,7 +881,7 @@ export default {
   }
   .backTop {
     transform: scale(1);
-    transition: transform .3s,-webkit-transform .3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
     position: fixed;
     right: 20px;
     bottom: 50px;
@@ -1028,6 +895,6 @@ export default {
       height: 22px;
       margin: 10px 0 0 15px;
     }
- }
+  }
 }
 </style>
