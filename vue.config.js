@@ -12,6 +12,13 @@ module.exports = {
         pathRewrite: {
           '^/mop': ''
         }
+      },
+      '/api': {
+        target: 'http://novelapi.mop.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
       }
     }
   }

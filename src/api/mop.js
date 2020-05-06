@@ -9,3 +9,13 @@ export const getBanner = () => {
     methods: 'GET'
   })
 }
+
+/**
+ * 获取本周排行
+ */
+export const getWeek = () => {
+  return axios({
+    url: '/api/book/newboard/bzphh5.json',
+    methods: 'GET'
+  })
+}

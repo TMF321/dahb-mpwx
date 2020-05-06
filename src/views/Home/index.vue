@@ -21,18 +21,18 @@
       <div class="activityBox">
         <div class="activityBox-track">
           <div class="activityBox-item">
-            <div class="skectill">
-              <a href="#">
+            <div class="skectill" v-for="item in weekList" :key="item.bookid" :data="item">
+              <router-link to="/search-result">
                 <img
-                  src="http://images01.mopimg.cn/imgs/20171127/20171127_da3922a8cddf7a3b9e77a1e957e3ae34.jpg"
+                  :src="item.imgjs"
                 />
-                <p class="bookName">王者荣耀</p>
+                <p class="bookName">{{ item.bookname}}</p>
                 <p>
-                  <span>貂蝉</span>
+                  <span>{{ item.author }}</span>
                 </p>
-              </a>
+              </router-link>
             </div>
-
+<!--
             <div class="skectill">
               <a href="#">
                 <img
@@ -55,10 +55,10 @@
                   <span>大地恩情</span>
                 </p>
               </a>
-            </div>
+            </div> -->
           </div>
 
-          <div class="activityBox-item">
+          <!-- <div class="activityBox-item">
             <div class="skectill">
               <a href="#">
                 <img
@@ -132,7 +132,7 @@
                 </p>
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="indicators">
@@ -650,7 +650,7 @@
 
 <script>
 import { Swiper, SwiperItem } from '@/components/Swiper'
-import { getBanner } from '@/api/mop'
+import { getBanner, getWeek } from '@/api/mop'
 import IndexNav from './components/indexNav'
 export default {
   name: 'Home',
@@ -662,7 +662,9 @@ export default {
 
   data () {
     return {
-      bannerList: []
+      bannerList: [],
+
+      weekList: []
     }
   },
 
@@ -675,11 +677,18 @@ export default {
       getBanner().then(res => {
         this.bannerList = res.data
       })
+    },
+
+    getWeek () {
+      getWeek().then(res => {
+        this.weekList = res.data
+      })
     }
   },
 
   created () {
     this.getBanner()
+    this.getWeek()
   }
 }
 </script>
